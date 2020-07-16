@@ -14,20 +14,25 @@ import java.net.HttpURLConnection
 class HomePresenterImpl : IHomePresenter<IHomeCallback> {
     var mhomeCallback: IHomeCallback? = null
     override fun getCategories() {
-
+        mhomeCallback?.onLoading()
         val api = RetrofitMananger.instance.getApi()
         val call = api.getCategories()
         call.enqueue(object : Callback<Categories> {
             override fun onFailure(call: Call<Categories>, t: Throwable) {
                 LogUtils.i("guoj", t.toString())
                 Log.i("ggg", "onFailure: " + t.toString())
+                mhomeCallback?.onError();
             }
 
             override fun onResponse(call: Call<Categories>, response: Response<Categories>) {
                 LogUtils.i("guoj", response.body().toString())
                 if (response.code() == HttpURLConnection.HTTP_OK) {
-                    val categories = response.body()
-                    mhomeCallback?.onCategoriesLoaded(categories)
+                    if (response.body() != null){
+                        val categories = response.body()
+                        mhomeCallback?.onCategoriesLoaded(categories)
+                    }else{
+                        mhomeCallback?.onEmpty()
+                    }
                 }
             }
 

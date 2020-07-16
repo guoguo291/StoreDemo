@@ -7,21 +7,22 @@ import com.guoj.store.model.bean.Categories
 import com.guoj.store.ui.fragment.HomePagerFragment
 import com.guoj.store.ui.fragment.SearchFragment
 
-class HomePageAdapter(fm: FragmentManager):FragmentPagerAdapter(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    private var categoryList:ArrayList<Categories.Data> =java.util.ArrayList()
+class HomePageAdapter(fm: FragmentManager) :
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    private var categoryList: ArrayList<Categories.Data> = java.util.ArrayList()
     override fun getItem(position: Int): Fragment {
-        return HomePagerFragment()
+        return HomePagerFragment.newInstance(categoryList.get(position))
     }
 
-    override fun getCount(): Int =categoryList.size
+    override fun getCount(): Int = categoryList.size
 
     //设置标题
     override fun getPageTitle(position: Int): CharSequence? {
         return categoryList.get(position).title
     }
 
-    fun setCategoryList(categories: Categories?){
-        if (categories!=null){
+    fun setCategoryList(categories: Categories?) {
+        if (categories != null) {
             this.categoryList.clear()
             this.categoryList.addAll(categories.data)
             notifyDataSetChanged()

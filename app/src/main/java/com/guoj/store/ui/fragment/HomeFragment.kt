@@ -1,5 +1,8 @@
 package com.guoj.store.ui.fragment
 
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import butterknife.BindView
 import com.google.android.material.tabs.TabLayout
@@ -32,6 +35,13 @@ class HomeFragment : BaseFragment(), IHomeCallback {
         homePresenter.registerViewCallback(this)
     }
 
+    override fun loadRootView(inflater: LayoutInflater, container: ViewGroup?): View? {
+        return inflater.inflate(R.layout.fragment_home_base,container,false)
+    }
+
+    override fun onRetryClick() {
+        homePresenter.getCategories()
+    }
     override fun loadData() {
         homePresenter.getCategories()
     }
@@ -40,7 +50,19 @@ class HomeFragment : BaseFragment(), IHomeCallback {
         LogUtils.i(this, categories.toString())
         //设置数据
         adapter.setCategoryList(categories)
+        setUpViewByState(ViewState.SUCCESS)
+    }
 
+    override fun onError() {
+        setUpViewByState(ViewState.ERROR)
+    }
+
+    override fun onEmpty() {
+        setUpViewByState(ViewState.EMPTY)
+    }
+
+    override fun onLoading() {
+        setUpViewByState(ViewState.LOADING)
     }
 
     override fun release() {

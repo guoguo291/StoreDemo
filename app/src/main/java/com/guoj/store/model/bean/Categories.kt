@@ -8,7 +8,7 @@ data class Categories(
 
 ) {
     data class Data(
-        val id: Int,
+        val id: Long,
         val title: String
 
     ) {
