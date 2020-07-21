@@ -1,10 +1,8 @@
 package com.guoj.store.view
 
+import com.guoj.store.base.IBaseCallBack
 import com.guoj.store.model.bean.Categories
 
-interface IHomeCallback {
+interface IHomeCallback :IBaseCallBack{
     fun onCategoriesLoaded(categories: Categories?)
-    fun onError()
-    fun onEmpty()
-    fun onLoading()
 }

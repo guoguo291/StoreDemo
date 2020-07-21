@@ -6,12 +6,17 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.guoj.store.model.bean.Categories
 import com.guoj.store.ui.fragment.HomePagerFragment
 import com.guoj.store.ui.fragment.SearchFragment
+import com.guoj.store.utils.Constants
 
 class HomePageAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private var categoryList: ArrayList<Categories.Data> = java.util.ArrayList()
     override fun getItem(position: Int): Fragment {
-        return HomePagerFragment.newInstance(categoryList.get(position))
+
+        return HomePagerFragment.newInstance(categoryList.get(position)).apply {
+            arguments?.putString(Constants.ID_MATERIAL,categoryList.get(position).id.toString())
+            arguments?.putString(Constants.TITLE,categoryList.get(position).title)
+        }
     }
 
     override fun getCount(): Int = categoryList.size

@@ -1,6 +1,6 @@
 package com.guoj.store.base
 
-interface IBasePresenter<T> {
+public interface IBasePresenter<T> {
     /**
      * 注册UI通知监听
      */
