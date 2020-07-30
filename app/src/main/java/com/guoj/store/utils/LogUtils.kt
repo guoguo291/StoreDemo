@@ -13,10 +13,10 @@ object LogUtils {
             Log.d(tag, "$log")
         }
     }
-    fun i(tag: Any, log: String?) {
+    fun i(tag: String, log: String?) {
         if (currentLev >= INFO_LEV) {
-//            Log.i(tag, "$log")
-            Log.i(tag.javaClass.name, "$log")
+            Log.i(tag, "$log")
+//            Log.i(tag.javaClass.name, "$log")
         }
     }
      fun w(tag: String, log: String?) {

@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment(), IHomeCallback {
     }
 
     override fun onCategoriesLoaded(categories: Categories?) {
-        LogUtils.i(this, categories.toString())
+        LogUtils.i("guoj", categories.toString())
         //设置数据
         adapter.setCategoryList(categories)
         setUpViewByState(ViewState.SUCCESS)
