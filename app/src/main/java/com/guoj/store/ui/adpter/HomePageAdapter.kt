@@ -10,7 +10,7 @@ import com.guoj.store.utils.Constants
 
 class HomePageAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    private var categoryList: ArrayList<Categories.Data> = java.util.ArrayList()
+    private var categoryList: ArrayList<Categories.Data> = ArrayList()
     override fun getItem(position: Int): Fragment {
 
         return HomePagerFragment.newInstance(categoryList.get(position)).apply {

@@ -5,5 +5,6 @@ import com.guoj.store.model.bean.Data
 
 interface ICategoryPagerCallback:IBaseCallBack {
     fun onHomeContentLoaded(homePagerContents: List<Data>?)
+    fun onLooperLoaded(homePagerContents: List<Data>?)
     fun getCategoryId():String?
 }

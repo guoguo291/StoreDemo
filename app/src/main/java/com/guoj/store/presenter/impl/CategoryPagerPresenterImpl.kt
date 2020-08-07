@@ -63,8 +63,11 @@ class CategoryPagerPresenterImpl private constructor():ICategoryPagerPresenter {
             if (callback.getCategoryId()==categoryId){
                 if (homePagerContent==null||data?.size==0){
                     callback.onEmpty()
+                }else{
+                    val looperDatas = data?.subList(data.size - 5, data.size)
+                    callback.onHomeContentLoaded(data)
+                    callback.onLooperLoaded(looperDatas)
                 }
-                callback.onHomeContentLoaded(data)
             }
         }
     }
