@@ -54,6 +54,10 @@ class LooperAdapter : PagerAdapter() {
         }
     }
 
+    fun getDataSize():Int {
+        return mDatas.size
+    }
+
 }
 
 

@@ -40,6 +40,7 @@ abstract class BaseFragment : Fragment() {
         loadStateView(inflater, container, baseContainerView)
         bind = ButterKnife.bind(this, rootView!!)
         initView()
+        initListener()
         initPresenter()
         loadData()
         return rootView
@@ -95,6 +96,9 @@ abstract class BaseFragment : Fragment() {
 
 
     open protected fun initView() {
+
+    }
+    open fun initListener(){
 
     }
 
